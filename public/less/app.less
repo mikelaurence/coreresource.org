@@ -16,14 +16,20 @@
 @banner_dark: @banner_medium - @diff;
 
 html {
-  background: -webkit-gradient(linear, left top, left bottom, from(@body_bright), to(@body_dark));
   min-height: 100%;
+}
+
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(@body_bright), to(@body_dark));
 }
 
 h1, h2 {
   font-family: "galette-1","galette-2",sans-serif;
-  font-weight: bold;
   margin: 0 0 -1.5% 0;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
   padding: 0;
 }
 
@@ -45,6 +51,19 @@ hr {
   margin: 2em 0;
   background-color: #333;
 }
+
+pre {
+  margin: 0.5em 0;
+}
+
+aside {
+  display: block;
+  line-height: 1em;
+  color: gray;
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
+
 
 
 /* ========== HEADER ========== */
@@ -94,3 +113,32 @@ hr {
   border-bottom: solid 1px @banner_dark;
   -webkit-box-shadow: 0px 2px 5px @banner_dark;
 }
+
+
+
+/* ========== QUICK START ========== */
+
+.quick_start {
+  ol.main {
+    li.main {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 20px;
+      padding: 20px;
+      background: @body_bright;
+      border: solid 1px @body_medium;
+      -webkit-box-shadow: 1px 1px 1px @body_dark;
+      border-radius: 10px;
+      div {
+        font-size: 0.5em;
+        font-weight: normal;
+      }
+      
+      ol {
+        list-style: lower-alpha;
+      }
+    }
+  }
+}
+
+

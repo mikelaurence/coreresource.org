@@ -1,1 +1,42 @@
-Quick start.
+.quick_start.container
+  %ol.main
+  
+    %li.main
+      %div
+        %h3
+          Add the Core Data framework to your project.
+        %ol
+          %li
+            Right click on "Frameworks", select "Add / Existing Frameworks...", and choose Core Data.
+          %li
+            Import CoreData.h in your prefix file:
+            %pre
+              %code
+                \#import &lt;CoreData/CoreData.h&gt;
+            %aside
+              Tip: your prefix file is a header that is automatically included by every class. It is usually named something like
+              ProjectName_Prefix.pch. If you don't have one, you can create one and then set "Prefix Header" in your target build settings.
+          %li
+            Create a Core Data model file. You can find the file type in "Add / New File... / iPhone OS / Resource / Data Model". The extension of
+            the file should be .xcdatamodel.
+  
+    %li.main
+      %div
+        %h3
+          Add Core Resource and its dependencies to your project.
+        %p
+          Core resource does not yet have a framework target, so you should just copy all of its files into your project folder.
+        %p
+          %ol
+            %li
+              Drag the CoreResource folder into your project (into "Classes", for example). 
+            %li
+              Make sure "Copy items into destination group's folder" and "Recursively create groups for any added folders" are checked.
+            %li
+              Right click on the "Examples" folder and remove it
+      
+  
+    %li.main
+  
+  
+    %li.main
