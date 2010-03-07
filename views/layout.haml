@@ -6,7 +6,7 @@
     %link{:rel=>'stylesheet', :href=>'/stylesheets/blueprint/print.css', :type => "text/css", :media => 'print'}
     /[if lt IE 8]
       %link{:rel=>'stylesheet', :href=>'/stylesheets/blueprint/ie.css', :type => "text/css", :media => 'screen, projection'}
-    %link{:rel=>'stylesheet', :href=>'/stylesheets/application.css', :type => "text/css", :media => 'screen, projection'}
+    %link{:rel=>'stylesheet', :href=>'/stylesheets/app.css', :type => "text/css", :media => 'screen, projection'}
     
     %script{:src => 'http://use.typekit.com/yhw7qux.js' }
     %script
@@ -15,10 +15,10 @@
   %body
     .header
       .container
-        .span-18
+        .span-6
           %h2
             Core Resource
-        .span-8.last
+        .span-18.last
           %ul
             %li#quick_start
               = link_to 'Quick Start', :quick_start
@@ -28,7 +28,4 @@
               = link_to 'Community', :community
             %li#source
               = link_to 'Source', 'http://github.com/mikelaurence/CoreResource'
-    .container
-      %h1
-        Core Resource
-        = yield
+    = yield
