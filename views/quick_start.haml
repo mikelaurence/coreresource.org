@@ -10,9 +10,8 @@
             Right click on "Frameworks", select "Add / Existing Frameworks...", and choose Core Data.
           %li
             Import CoreData.h in your prefix file:
-            %pre
-              %code
-                \#import &lt;CoreData/CoreData.h&gt;
+            %code
+              \#import &lt;CoreData/CoreData.h&gt;
             %aside
               Tip: your prefix file is a header that is automatically included by every class. It is usually named something like
               ProjectName_Prefix.pch. If you don't have one, you can create one and then set "Prefix Header" in your target build settings.
@@ -35,8 +34,24 @@
             %li
               Right click on the "Examples" folder and remove it
       
-  
     %li.main
-  
-  
+      %div
+        %h3
+          Instantiate a CoreManager in your app delegate or another global space.
+        %p
+          At this point, you can start adding in your own unique settings. If you're just seeing what this is all about, you can begin by
+          connecting to coreresource.org, which itself has a RESTful demo service. The details from here on out will refer to that service.
+          %code
+            CoreManager *coreManager = [[CoreManager alloc] init];
+            %br
+            coreManager.remoteSiteURL = @"http://coreresource.org";
+    
     %li.main
+      %div
+        %h3
+          Set up your Core Data model and create matching CoreResource classes.
+          
+    %li.main
+      %div
+        %h3
+          Instantiate a CoreManager in your app delegate or another global space.

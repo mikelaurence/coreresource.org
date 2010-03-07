@@ -3,6 +3,7 @@
 @orangey: #ffa073;
 
 @body_bright: #ffe;
+@body_lessbright: @body_bright - @diff;
 @body_medium: @body_bright - @diff - @diff;
 @body_dark: @body_medium - @diff - @diff;
 
@@ -52,8 +53,12 @@ hr {
   background-color: #333;
 }
 
-pre {
+code {
+  display: block;
   margin: 0.5em 0;
+  padding: 5px;
+  background: @body_lessbright;
+  border-radius: 5px;
 }
 
 aside {
