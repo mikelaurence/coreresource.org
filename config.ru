@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'sinatra/mapping'
 
 log = File.new('sinatra.log', 'a')
 STDOUT.reopen(log)
