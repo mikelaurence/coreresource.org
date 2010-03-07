@@ -9,7 +9,7 @@ helpers do
 end
 
 
-# ===== ROUTES ===== #
+# ===== PAGES ===== #
 
 map :root, '/'
 map :tutorials, '/tutorials'
@@ -32,3 +32,7 @@ end
 get documentation_path do
   haml :documentation
 end
+
+
+# ===== WEB SERVICE ===== #
+

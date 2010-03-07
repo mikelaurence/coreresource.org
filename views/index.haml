@@ -6,3 +6,28 @@
       %p
         Local & remote resource management library for Objective-C using Core Data with Rails-like syntax.
     .span-8.last
+      
+.index
+  .container
+    .span-15.append-1
+      %p
+        Admit it: Objective-C is verbose and finnicky.
+      %h2
+        So why repeat yourself?
+      %p
+        Core Resource leverages awesome existing frameworks and provides deep interaction with web services
+        through conventions and syntactic sugar.
+      %ul
+        %li
+          Make easy calls to web services with minimal configuration:
+          %code
+            [Note findAll:$(@"author", @"Buster", @"$sort", @"createdAt DESC", nil)];
+        %li
+          Automatically store serialized objects locally using Core Data, relationships intact
+        %li
+          Rapidly build resource-based table views with CoreTableController:
+          %code
+            [self fetchForRelatedResource:parent withSort:@"lastName ASC"];
+        
+    .span-8.last
+      %img{ :src => 'images/app-lighthouse-body-1.png' }
