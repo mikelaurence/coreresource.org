@@ -49,3 +49,11 @@ end
 
 # ===== WEB SERVICE ===== #
 
+get '/pings.json' do
+  PINGS.find().limit(20).sort([['id', :desc]]).to_a.to_json
+end
+
+post '/pings' do
+  (PINGS.insert 'created_at' => DateTime.new, 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
+    'message' => params[:message], 'device' => params[:device]).to_json
+end
