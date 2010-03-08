@@ -69,6 +69,10 @@ aside {
   margin-bottom: 1em;
 }
 
+.centered {
+  text-align: center;
+}
+
 
 
 /* ========== HEADER ========== */
@@ -110,13 +114,21 @@ aside {
 
 
 
-/* ========== BANNER ========== */
+/* ========== INDEX ========== */
 
 .banner {
-  padding: 20px;
+  position: relative;
   background: -webkit-gradient(linear, left top, left bottom, from(@banner_bright), to(@banner_medium));
+  .back {
+    background: url('../images/dotty-background.png') bottom left repeat-x;
+  }
   border-bottom: solid 1px @banner_dark;
   -webkit-box-shadow: 0px 2px 5px @banner_dark;
+  .container {
+    .span-16 {
+      padding: 20px;
+    }
+  }
 }
 
 .index {
@@ -128,7 +140,9 @@ aside {
   h2 {
     margin: 0.5em 0;
   }
-  
+  li {
+    margin: 1em 0;
+  }
   code {
     font-size: 0.8em;
   }

@@ -1,11 +1,13 @@
 .banner
-  .container
-    .span-16
-      %h1 Core Resource
-      %hr
-      %p
-        Local & remote resource management library for Objective-C using Core Data with Rails-like syntax.
-    .span-8.last
+  .back
+    .container
+      .span-16
+        %h1 Core Resource
+        %hr
+        %p
+          Local & remote resource management library for Objective-C using Core Data with Rails-like syntax.
+      .span-8.last
+        &nbsp;
       
 .index
   .container
@@ -23,11 +25,16 @@
           %code
             [Note findAll:$(@"author", @"Buster", @"$sort", @"createdAt DESC", nil)];
         %li
-          Automatically store serialized objects locally using Core Data, relationships intact
+          Automatically store serialized resources locally using Core Data, object relationships intact.
         %li
-          Rapidly build resource-based table views with CoreTableController:
+          Rapidly build high-performance, resource-based table views with CoreTableController:
           %code
             [self fetchForRelatedResource:parent withSort:@"lastName ASC"];
         
     .span-8.last
+      %aside.centered
+        Lighthouse ticket viewer app for Core Resource.
+        %br
+        %b
+          Built in 3 hours at Chicago's <a href="http://dayofmobile.com">Day of Mobile</a>.
       %img{ :src => 'images/app-lighthouse-body-1.png' }
