@@ -46,6 +46,9 @@ h2 {
 
 a {
   color: black;
+  :hover {
+    color: #666;
+  }
 }
 
 hr {
@@ -131,7 +134,7 @@ aside {
   }
 }
 
-.index {
+.content {
   margin-top: 3em;
   p, ul {
     font-size: 1.25em;
@@ -149,30 +152,38 @@ aside {
 }
 
 
-
-/* ========== QUICK START ========== */
-
-.quick_start {
-  ol.main {
+.content {
+  ol.main, ul.main {
     li.main {
-      font-size: 2em;
-      font-weight: bold;
       margin: 20px;
       padding: 20px;
       background: @body_bright;
       border: solid 1px @body_medium;
       -webkit-box-shadow: 1px 1px 1px @body_dark;
       border-radius: 10px;
+    }
+  }
+  ol.main {
+    li.main {
+      font-size: 2em;
+      font-weight: bold;
       div {
         font-size: 0.5em;
         font-weight: normal;
       }
-      
       ol {
         list-style: lower-alpha;
       }
     }
   }
+  ul.main {
+    list-style: none;
+    padding-left: 0;
+  }
 }
 
 
+a.lighthouse {
+  padding: 5px 0px 5px 26px;
+  background: url('../images/lighthouse.png') left no-repeat;
+}
