@@ -9,6 +9,14 @@ helpers do
 end
 
 
+# ===== STYLESHEETS ===== #
+
+get '/stylesheets/app.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  less :app
+end
+
+
 # ===== PAGES ===== #
 
 map :root, '/'

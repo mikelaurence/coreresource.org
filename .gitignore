@@ -2,3 +2,4 @@ tmp
 sinatra.log
 deploy.yaml
 Capfile
+mkmf.log
