@@ -21,6 +21,7 @@ html {
 }
 
 body {
+  background: @body_bright -moz-linear-gradient(top, @body_bright, @body_dark);
   background: -webkit-gradient(linear, left top, left bottom, from(@body_bright), to(@body_dark));
 }
 
@@ -62,6 +63,7 @@ code {
   padding: 5px;
   background: @body_lessbright;
   border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 
 aside {
@@ -82,6 +84,7 @@ aside {
 
 .header {
   padding: 20px;
+  background: @header_bright -moz-linear-gradient(top, @header_bright, @header_medium);
   background: -webkit-gradient(linear, left top, left bottom, from(@header_bright), to(@header_medium));
   border-bottom: solid 5px @header_dark;
   -webkit-box-shadow: 0px 2px 5px #9f4100;
@@ -121,6 +124,7 @@ aside {
 
 .banner {
   position: relative;
+  background: @banner_bright -moz-linear-gradient(top, @banner_bright, @banner_medium);
   background: -webkit-gradient(linear, left top, left bottom, from(@banner_bright), to(@banner_medium));
   .back {
     background: url('../images/dotty-background.png') bottom left repeat-x;
@@ -161,6 +165,7 @@ aside {
       border: solid 1px @body_medium;
       -webkit-box-shadow: 1px 1px 1px @body_dark;
       border-radius: 10px;
+      -moz-border-radius: 10px;
     }
   }
   ol.main {
