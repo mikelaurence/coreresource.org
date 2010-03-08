@@ -5,7 +5,7 @@
         %h1 Core Resource
         %hr
         %p
-          Local & remote resource management library for Objective-C using Core Data with Rails-like syntax.
+          Local & remote resource management for Objective-C in as little code as possible.
       .span-8.last
         &nbsp;
       
@@ -23,7 +23,7 @@
         %li
           Make easy calls to web services with minimal configuration:
           %code
-            [Note findAll:$(@"author", @"Buster", @"$sort", @"createdAt DESC", nil)];
+            [Note findAll:$D(@"Buster", @"author", @"createdAt DESC", @"$sort", nil)];
         %li
           Automatically store serialized resources locally using Core Data, object relationships intact.
         %li
