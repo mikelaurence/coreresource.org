@@ -12,8 +12,10 @@ end
 # ===== STYLESHEETS ===== #
 
 get '/stylesheets/app.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  less :app
+  cache 'app.css' do
+    content_type 'text/css', :charset => 'utf-8'
+    less :app
+  end
 end
 
 
@@ -26,23 +28,33 @@ map :documentation, '/documentation'
 map :community, '/community'
 
 get root_path do
-  haml :index
+  cache 'root' do
+    haml :index
+  end
 end
 
 get quick_start_path do
-  haml :quick_start
+  cache 'quick_start' do
+    haml :quick_start
+  end
 end
 
 get tutorials_path do
-  haml :tutorials
+  cache 'tutorials' do
+    haml :tutorials
+  end
 end
 
 get documentation_path do
-  haml :documentation
+  cache 'documentation' do
+    haml :documentation
+  end
 end
 
 get community_path do
-  haml :community
+  cache 'community' do
+    haml :community
+  end
 end
 
 
@@ -50,10 +62,13 @@ end
 # ===== WEB SERVICE ===== #
 
 get '/pings.json' do
-  PINGS.find().limit(20).sort([['id', :desc]]).to_a.to_json
+  cache 'pings.json' do
+    PINGS.find().limit(20).sort([['id', :desc]]).to_a.to_json
+  end
 end
 
 post '/pings' do
+  expire 'pings.json'
   (PINGS.insert 'created_at' => DateTime.new, 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
     'message' => params[:message], 'device' => params[:device]).to_json
 end

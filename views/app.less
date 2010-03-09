@@ -16,6 +16,8 @@
 @banner_medium: @banner_bright - @diff;
 @banner_dark: @banner_medium - @diff;
 
+@community_link: @banner_bright + #333;
+
 html {
   min-height: 100%;
 }
@@ -197,7 +199,32 @@ aside {
 }
 
 
-a.lighthouse {
-  padding: 5px 0px 5px 26px;
-  background: url('../images/lighthouse.png') left no-repeat;
+
+/* ========== COMMUNITY ========== */
+
+.community {
+  a {
+    border-radius: 10px;
+    padding: 5px;
+    border: solid 1px (@community_link - #222);
+    text-decoration: none;
+    :hover {
+      color: black;
+      border: solid 1px (@community_link - #777);
+    }
+  }
+  
+  a.getsatisfaction {
+    background: @community_link;
+  }
+  
+  a.lighthouse {
+    padding-left: 32px;
+    background: @community_link url('../images/lighthouse.png') 5px no-repeat;
+  }
+
+  a.github {
+    padding-left: 32px;
+    background: @community_link url('../images/github.png') 5px no-repeat;
+  }
 }
