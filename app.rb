@@ -12,8 +12,8 @@ end
 # ===== STYLESHEETS ===== #
 
 get '/stylesheets/app.css' do
+  content_type 'text/css', :charset => 'utf-8'
   cache 'app.css' do
-    content_type 'text/css', :charset => 'utf-8'
     less :app
   end
 end
