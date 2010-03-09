@@ -20,7 +20,7 @@ PINGS = DB.collection('pings')
 
 # Memcached
 set :cache_server, 'localhost:11211'
-set :cache_namespace, "coreresource.org.#{DateTime.to_i}"
+set :cache_namespace, "coreresource.org.#{Time.new.to_i}"
 set :cache_enable, production?
 set :cache_logging, true
 set :cache_default_expiry, 60*60
