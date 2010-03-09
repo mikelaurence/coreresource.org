@@ -25,6 +25,7 @@ html {
 body {
   background: @body_bright -moz-linear-gradient(top, @body_bright, @body_dark);
   background: -webkit-gradient(linear, left top, left bottom, from(@body_bright), to(@body_dark));
+  font-size: 14px;
 }
 
 h1, h2 {
@@ -70,10 +71,10 @@ code {
 
 aside {
   display: block;
-  line-height: 1em;
+  line-height: 1.1em;
   color: gray;
   font-size: 0.9em;
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 
 .centered {
@@ -89,11 +90,12 @@ aside {
 /* ========== HEADER ========== */
 
 .header {
-  padding: 20px;
+  padding: 1em;
   background: @header_bright -moz-linear-gradient(top, @header_bright, @header_medium);
   background: -webkit-gradient(linear, left top, left bottom, from(@header_bright), to(@header_medium));
   border-bottom: solid 5px @header_dark;
   -webkit-box-shadow: 0px 2px 5px #9f4100;
+  font-size: 0.9em;
 
   .last {
     text-align: right;
@@ -136,18 +138,14 @@ aside {
     background: url('../images/dotty-background.png') bottom left repeat-x;
   }
   border-bottom: solid 1px @banner_dark;
-  -webkit-box-shadow: 0px 2px 5px @banner_dark;
-  .container {
-    .span-16 {
-      padding: 20px 0;
-    }
-  }
+  -webkit-box-shadow: 0px 2px 5px @banner_dark;  
+  padding-top: 1em;
 }
 
 .content {
   margin-top: 3em;
+  
   p, ul {
-    font-size: 1.25em;
     margin: 0.5em 0;
   }
   h2 {
@@ -159,10 +157,7 @@ aside {
   code {
     font-size: 0.8em;
   }
-}
-
-
-.content {
+  
   h2.main {
     font-size: 4em;
     text-align: center;
@@ -170,22 +165,27 @@ aside {
   }
   ol.main, ul.main {
     li.main {
-      margin: 20px;
-      padding: 20px;
+      margin-bottom: 3em;
+      padding: 2em;
       background: @body_bright;
       border: solid 1px @body_medium;
       -webkit-box-shadow: 1px 1px 1px @body_dark;
       border-radius: 10px;
       -moz-border-radius: 10px;
-    }
-  }
-  ol.main {
-    li.main {
-      font-size: 2em;
-      font-weight: bold;
-      div {
-        font-size: 0.5em;
-        font-weight: normal;
+      
+      ::marker {
+        margin: 30px;
+        font-size: 3em;
+        font-weight: bold;
+      }
+      
+      ul {
+        font-size: 0.9em;
+        list-style: dash;
+        padding-left: 2em;
+        li {
+          margin: 0;
+        }
       }
       ol {
         list-style: lower-alpha;
