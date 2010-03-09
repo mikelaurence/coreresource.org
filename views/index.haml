@@ -22,14 +22,16 @@
       %ul
         %li
           Make easy calls to web services with minimal configuration:
-          %code
-            [Note findAll:$D(@"Buster", @"author", @"createdAt DESC", @"$sort", nil)];
+          %pre
+            %code
+              [Note findAll:$D(@"Buster", @"author", @"createdAt DESC", @"$sort")];
         %li
           Automatically store serialized resources locally using Core Data, object relationships intact.
         %li
           Rapidly build high-performance, resource-based table views with CoreTableController:
-          %code
-            [self fetchForRelatedResource:parent withSort:@"lastName ASC"];
+          %pre
+            %code
+              [self fetchForRelatedResource:parent withSort:@"lastName ASC"];
         
     .span-8.last
       %aside.centered

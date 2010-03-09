@@ -63,12 +63,12 @@ end
 
 get '/pings.json' do
   cache 'pings.json' do
-    PINGS.find().limit(20).sort([['id', :desc]]).to_a.to_json
+    PINGS.find().limit(20).sort([['id', :desc]]).to_a.collect{ |p| p.merge({ 'resourceId' => p.delete('_id').to_s }) }.to_json
   end
 end
 
 post '/pings' do
   expire 'pings.json'
-  (PINGS.insert 'created_at' => DateTime.new, 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
+  (PINGS.insert 'created_at' => DateTime.new, 'name' => params[:name], 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
     'message' => params[:message], 'device' => params[:device]).to_json
 end

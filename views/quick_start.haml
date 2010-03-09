@@ -23,13 +23,14 @@
               Tip: you can also just drag these frameworks from another project (such as one of the examples) into yours.
           %li
             Import CoreData.h in your prefix file:
-            %code
-              \#import &lt;CoreData/CoreData.h&gt;
+            %pre
+              %code
+                \#import &lt;CoreData/CoreData.h&gt;
             %aside
               Tip: your prefix file is a header that is automatically included by every class. It is usually named something like
               ProjectName_Prefix.pch. If you don't have one, you can create one and then set "Prefix Header" in your target build settings.
           %li
-            Create a Core Data model file. You can find the file type in "Add / New File... / iPhone OS / Resource / Data Model". The extension of
+            Add a Core Data model file. You can find the file type in "Add / New File... / iPhone OS / Resource / Data Model". The extension of
             the file should be .xcdatamodel.
   
       %li.main
@@ -53,16 +54,87 @@
           Instantiate a CoreManager in your app delegate or another global space.
         %p
           At this point, you can start adding in your own unique settings. If you're just seeing what this is all about, you can begin by
-          connecting to coreresource.org, which itself has a RESTful demo service. The details from here on out will refer to that service.
-          %code
-            CoreManager *coreManager = [[CoreManager alloc] init];
-            %br
-            coreManager.remoteSiteURL = @"http://coreresource.org";
+          connecting to coreresource.org's "pings" demo service. The details from here on out will refer to that service specifically.
+          %pre
+            %code
+              :preserve
+                // Declare in your header file: CoreManager *coreManager;
+                coreManager = [[CoreManager alloc] init];
+                coreManager.remoteSiteURL = @"http://coreresource.org";
     
       %li.main
         %h3
           Set up your Core Data model and create matching CoreResource classes.
+        %p
+          The heart of Core Data is the data model that you prepare using the intuitive built-in modeller. 
+          Simply click on the .xcdatamodel file you created earlier, and the modeller will appear. There are plenty of options for
+          you to read up on, but the basics should be fairly obvious; create an Entity for each resource and give it some properties.
+          For example, here is a screenshot of what the "pings" model looks like:
+          %img{ :src => 'images/coreping-xcdatamodel.png' }
+        %p
+          Note that we specified the class <b>Ping</b> for our Ping entity. This is so we can customize the logic of the class, especially by
+          subclassing <b>CoreResource</b>, which provides the brunt of the framework's functionality.
+        %p
+          Go ahead and create a Ping class and inherit from CoreResource. Next, go back to the .xcdatamodel and select all of the properties in
+          the Ping entity. Go to "Design / Data Model / Copy Obj-C 2.0 Method Declarations to Clipboard" to generate your @property declarations,
+          and paste them into the Ping header file. They should look like this:
+          %pre
+            %code
+              :preserve
+                @interface Ping : CoreResource {}
+
+                @property (nonatomic, retain) NSDate *created_at; 
+                @property (nonatomic, retain) NSString *device; 
+                @property (nonatomic, retain) NSNumber *latitude; 
+                @property (nonatomic, retain) NSNumber *longitude; 
+                @property (nonatomic, retain) NSString *message; 
+                @property (nonatomic, retain) NSString *name;
+
+                @end
+        %p 
+          You'll also need to define these properties in your implementation file. There's no menu command to do so properly, 
+          but you can easily do it yourself by replacing everything but the variable name with @dynamic. The result should look like this:
+          %pre
+            %code
+              :preserve
+                @implementation Ping
+
+                @dynamic created_at; 
+                @dynamic device; 
+                @dynamic latitude; 
+                @dynamic longitude; 
+                @dynamic message; 
+                @dynamic name;
+
+                @end
+        %p
+          There are dozens of other ways to customize the interaction between your resource class and your remote API; fortunately, the <em>pings</em>
+          API requires none of them (that's why this is the "quick start"!) You will, of course, find plenty of these customizations in the other
+          various example projects.
           
       %li.main
         %h3
-          Instantiate a CoreManager in your app delegate or another global space.
+          Create a Core Table Controller to view the data
+        %p
+          Since so much resource data is displayed in list format, Core Resource provides a convenience class to rapidly build resource-connected
+          table controllers. Merely by inheriting <b>CoreTableController</b> and providing a little bit of configuration, we should be able to see data in no time!
+        %p
+          In this case, our target resources are <em>pings</em>, so create a class called <b>PingsController</b> and inherit from <b>CoreTableController</b>.
+          Our controller will try to use the class name to find the correct resource class (you can override <code>+(Class)model</code> to change this behaviour).
+          No xib is required - the controller will create and assign a UITableView by default. Nifty, eh?
+        %p
+          The only code we must add at this point is a remote call and a local fetch. We can do this in <code>viewWillAppear</code>:
+          %pre
+            %code
+              :preserve
+                - (void) viewWillAppear:(BOOL)animated {
+                    [Ping findAllRemote];
+                    [[self coreResultsController] fetchWithSort:@"created_at DESC"];
+                }
+        %p
+          By default, CoreTableController will generate cells and attempt to use the title, name, or description attribute to provide text. Because <b>Ping</b> objects have
+          a name attribute, we should already see data when we load up the app!
+        %p
+          Of course, a little more detail would go a long way. After all, we wouldn't want Apple to reject our app for "minimal user experience", would we? So check out the
+          <a href="http://github.com/mikelaurence/CoreResource/tree/master/Examples/CorePingPlus/">CorePingPlus example project</a> for a little more snazz. And come back soon, because we'll have a play-by-play for the other example projects as well!
+          
