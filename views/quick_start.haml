@@ -121,9 +121,10 @@
         %p
           In this case, our target resources are <em>pings</em>, so create a class called <b>PingsController</b> and inherit from <b>CoreTableController</b>.
           Our controller will try to use the class name to find the correct resource class (you can override <code>+(Class)model</code> to change this behaviour).
-          No xib is required - the controller will create and assign a UITableView by default. Nifty, eh?
+          We'll also need a UITableView wired up to the controller; you can create this in a .xib file or just do so programmatically
+          (this can be done easily by calling the convenience method <code>[self loadTableView]</code> within <code>loadView</code>).
         %p
-          The only code we must add at this point is a remote call and a local fetch. We can do this in <code>viewWillAppear</code>:
+          The only functional code we must add at this point is a remote call and a local fetch. We can do this in <code>viewWillAppear</code>:
           %pre
             %code
               :preserve
