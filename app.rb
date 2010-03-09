@@ -69,6 +69,6 @@ end
 
 post '/pings' do
   expire 'pings.json'
-  (PINGS.insert 'created_at' => DateTime.new, 'name' => params[:name], 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
+  (PINGS.insert 'created_at' => Time.new, 'name' => params[:name], 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
     'message' => params[:message], 'device' => params[:device]).to_json
 end
