@@ -63,7 +63,7 @@ end
 
 get '/pings.json' do
   cache 'pings.json' do
-    PINGS.find().limit(20).sort([['id', :desc]]).to_a.collect{ |p| p.merge({ 'resourceId' => p.delete('_id').to_s }) }.to_json
+    PINGS.find().limit(20).sort([['id', :desc]]).to_a.collect{ |p| p.merge({ 'id' => p.delete('_id').to_s }) }.to_json
   end
 end
 
