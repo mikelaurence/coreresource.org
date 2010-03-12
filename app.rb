@@ -26,6 +26,7 @@ map :quick_start, '/quick_start'
 map :tutorials, '/tutorials'
 map :documentation, '/documentation'
 map :community, '/community'
+map :feed, '/feed'
 
 get root_path do
   cache 'root' do
@@ -56,6 +57,12 @@ get community_path do
     haml :community
   end
 end
+
+#get feed_path do
+  #cache 'community' do
+#    markdown :community
+  #end
+#end
 
 
 

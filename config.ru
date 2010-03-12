@@ -5,6 +5,7 @@ require 'sinatra/memcache'
 require 'less'
 require 'mongo'
 require 'json'
+require 'rdiscount'
 
 # Note the application's root directory for convenience
 ROOT = File.expand_path File.dirname(__FILE__) unless defined?(ROOT)
