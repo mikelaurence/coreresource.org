@@ -5,5 +5,8 @@
 
     %dl.main
       - @topics.each do |topic|
-        %dt= topic['permalink'].capitalize.gsub(/\-/, ' ').gsub(/http/i, 'HTTP')
-        %dd= markdown(topic['content'])
+        %dt 
+          %a{ :name => "/topics##{topic}" }= topic['permalink'].capitalize.gsub(/\-/, ' ').gsub(/http/i, 'HTTP')
+        %dd 
+          :markdown
+            #{topic['content']}

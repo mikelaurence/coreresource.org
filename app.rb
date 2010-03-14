@@ -86,13 +86,6 @@ def case_study_split(case_study, file)
   File.new(case_study_path(case_study, file)).read.split('==========')
 end
 
-def case_study_md(case_study, file, suffix = '')
-  RDiscount.new(File.new(case_study_path(case_study, file)).read + suffix).to_html
-end
-
-def markdown(text)
-  RDiscount.new(text).to_html
-end
 
 
 
@@ -133,12 +126,12 @@ end
 
 # ===== HELPERS ===== #
 
-def question(name)
+def markdown(text)
+  RDiscount.new(text).to_html
 end
 
-
-
-
+def question(name)
+end
 
 
 

@@ -6,7 +6,7 @@
       %h2.main
         = @case_study.capitalize
     
-    - ['Summary', 'Authentication', 'Requests', 'Validations', 'Something Else'].each do |section|
+    - ['Summary', 'Authentication', 'Requests', 'Relationships', 'Validations', 'Something Else'].each do |section|
       - if case_study_has?(@case_study, section)
         - md = case_study_split(@case_study, section)
         %section
@@ -15,7 +15,8 @@
               = section
 
           .span-14.prepend-1.append-1.analysis
-            = markdown md[0]
+            :markdown
+              #{md[0]}
             
           - if section == 'Summary'
             /%img{ :src => "/images/app-#{@case_study}-body.png", :style => "width:#{(292*0.8).to_i}px;height:#{(623*0.8).to_i}px;" }
