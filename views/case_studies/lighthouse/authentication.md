@@ -1,0 +1,5 @@
+- HTTP basic authentication
+- API token, passed via one of three methods:
+    - HTTP header 'X-LighthouseToken'
+    - Basic auth with token as login and 'x' as the password
+    - Appending _token=XXX to all URLs
