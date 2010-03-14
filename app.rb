@@ -1,14 +1,3 @@
-# ===== HELPERS ===== #
-
-helpers do
-  
-  def test
-    'test'
-  end
-  
-end
-
-
 # ===== STYLESHEETS ===== #
 
 get '/stylesheets/app.css' do
@@ -80,9 +69,33 @@ end
 
 CASE_STUDIES = Dir.glob('views/case_studies/*').select{ |fn| File.directory?(fn) }.collect{ |d| d.match(/\w+$/).to_s}
 
-def case_study_md(case_study, file, suffix = '')
-  RDiscount.new(File.new(File.join(ROOT, "views/case_studies/#{case_study}/#{file.to_s}.md")).read + suffix).to_html
+def case_study_has?(case_study, file)
+  File.exist?(case_study_path(case_study, file))
 end
+
+def case_study_path(case_study, file)
+  File.join(ROOT, "views/case_studies/#{case_study}/#{file.to_s}.md")
+end
+
+def case_study_split(case_study, file)
+  File.new(case_study_path(case_study, file)).read.split('==========')
+end
+
+def case_study_md(case_study, file, suffix = '')
+  RDiscount.new(File.new(case_study_path(case_study, file)).read + suffix).to_html
+end
+
+def markdown(text)
+  RDiscount.new(text).to_html
+end
+
+
+
+# ===== HELPERS ===== #
+
+def question(name)
+end
+
 
 
 

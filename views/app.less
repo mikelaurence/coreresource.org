@@ -238,17 +238,20 @@ aside {
 }
 
 .case_study {
-  h2 {
-    margin-top: 0;
+  header {
+    h2 {
+      margin-top: 0;
+    }
+    h3 {
+      margin-bottom: 0;
+    }
   }
-  h3 {
-    margin-bottom: 0;
-  }
-  dl {
-    dt {
+  section {
+    h3 {
       display: inline-block;
       .banner_bg;
-      padding: 5px;
+      padding: 10px;
+      margin: 0 0 0px 0;
       border-radius: 5px;
     }
     ul {
@@ -256,6 +259,13 @@ aside {
     }
     li {
       margin: 0;
+    }
+    
+    .analysis {
+      margin-bottom: 30px;
+    }
+    .implementation {
+      font-size: 0.85em;
     }
   }
 }

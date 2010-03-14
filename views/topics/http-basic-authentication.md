@@ -1,0 +1,1 @@
+Basic authentication is handled natively by the [ASIHTTPRequest library](http://allseeing-i.com/ASIHTTPRequest/); since Core Resource's requests are merely subclasses of ASIHTTPRequest, all you have to do is configure them before they go out. You can do so by overriding the `+ (void) configureRequest:(CoreRequest*)request forAction:(NSString*)action` method in CoreResource.

@@ -1,18 +1,28 @@
 .container
   .case_study.content
-    .span-24.last
+    %header.main
       %h3.centered
         Case Study
       %h2.main
         = @case_study.capitalize
     
-    .span-16
-      %dl
-        - ['Summary', 'Authentication'].each do |section|
-          %dt
-            = section
-          %dd
-            = case_study_md(@case_study, section.downcase.to_sym)
-    
-    .span-8.last
-      %img{ :src => "/images/app-#{@case_study}-body.png", :style => "width:#{(292*0.8).to_i}px;height:#{(623*0.8).to_i}px;" }
+    - ['Summary', 'Authentication', 'Requests', 'Validations', 'Something Else'].each do |section|
+      - if case_study_has?(@case_study, section)
+        - md = case_study_split(@case_study, section)
+        %section
+          .span-24.last
+            %h3
+              = section
+
+          .span-14.prepend-1.append-1.analysis
+            = markdown md[0]
+            
+          - if section == 'Summary'
+            /%img{ :src => "/images/app-#{@case_study}-body.png", :style => "width:#{(292*0.8).to_i}px;height:#{(623*0.8).to_i}px;" }
+            
+          - elsif md[1]
+            .span-8.last.implementation
+              = markdown md[1]
+  
+    /.span-6.last
+    /  %img{ :src => "/images/app-#{@case_study}-body.png", :style => "width:#{(292*0.8).to_i}px;height:#{(623*0.8).to_i}px;" }
