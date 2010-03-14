@@ -50,6 +50,13 @@ get case_studies_path do
   end
 end
 
+get '/case-studies/:case_study' do
+  @case_study = params[:case_study]
+  cache "case-studies/#{@case_study}" do
+    haml :'case_studies/show'
+  end
+end
+
 get documentation_path do
   cache 'documentation' do
     haml :documentation
@@ -73,6 +80,9 @@ end
 
 CASE_STUDIES = Dir.glob('views/case_studies/*').select{ |fn| File.directory?(fn) }.collect{ |d| d.match(/\w+$/).to_s}
 
+def case_study_md(case_study, file, suffix = '')
+  RDiscount.new(File.new(File.join(ROOT, "views/case_studies/#{case_study}/#{file.to_s}.md")).read + suffix).to_html
+end
 
 
 

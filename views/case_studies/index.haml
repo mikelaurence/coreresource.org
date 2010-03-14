@@ -9,6 +9,4 @@
         %li.main
           %a{ :href => url }
             %img{ :src => "/images/case-study-#{case_study}.png" }
-          = RDiscount.new(File.new(File.join(File.dirname(__FILE__), "#{case_study}/summary.md")).read + " [More...](#{url})").to_html
-          /.app
-          /  %img{ :src => "/images/app-#{case_study}-body.png", :style => "width:#{(292*0.6).to_i}px;height:#{(623*0.6).to_i}px;" }
+          = case_study_md case_study, :summary, " [More...](#{url})"

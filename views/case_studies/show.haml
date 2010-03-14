@@ -1,0 +1,13 @@
+.container
+  .case_study.content
+    .span-24.last
+      %h3.centered
+        Case Study
+      %h2.main
+        = @case_study.capitalize
+    
+    .span-16
+      = case_study_md(@case_study, :summary)
+    
+    .span-8.last
+      %img{ :src => "/images/app-#{@case_study}-body.png", :style => "width:#{(292*0.8).to_i}px;height:#{(623*0.8).to_i}px;" }
