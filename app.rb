@@ -12,7 +12,6 @@ end
 
 map :root, '/'
 map :quick_start, '/quick-start'
-map :case_studies, '/case-studies'
 map :documentation, '/documentation'
 map :community, '/community'
 map :feed, '/feed'
@@ -30,19 +29,6 @@ end
 get quick_start_path do
   cache 'quick-start' do
     haml :quick_start
-  end
-end
-
-get case_studies_path do
-  cache 'case-studies' do
-    haml :'case_studies/index'
-  end
-end
-
-get '/case-studies/:case_study' do
-  @case_study = params[:case_study]
-  cache "case-studies/#{@case_study}" do
-    haml :'case_studies/show'
   end
 end
 
@@ -65,7 +51,26 @@ end
 #end
 
 
-# ===== ÇASE STUDIES ===== #
+# ===== CASE STUDIES ===== #
+
+map :case_studies, '/case-studies'
+
+get case_studies_path do
+  cache 'case-studies' do
+    haml :'case_studies/index'
+  end
+end
+
+get '/case-studies/:case_study' do
+  @case_study = params[:case_study]
+  if File.exist?("views/case_studies/#{@case_study}")
+    cache "case-studies/#{@case_study}" do
+      haml :'case_studies/show'
+    end
+  else
+    raise Sinatra::NotFound.new
+  end
+end
 
 CASE_STUDIES = Dir.glob('views/case_studies/*').select{ |fn| File.directory?(fn) }.collect{ |d| d.match(/\w+$/).to_s}
 
@@ -91,10 +96,48 @@ end
 
 
 
+# ===== TOPICS ===== #
+
+map :topics, '/topics'
+
+get topics_path do
+  cache 'topics' do
+    @topics = TOPICS.find().sort('permalink')
+    puts @topics
+    haml :'topics/index'
+  end
+end
+
+get '/topics/:topic' do
+  @topic = TOPICS.find(:permalink => params[:topic])
+  if @topic
+    cache "topics/#{params[:topic]}" do
+      haml :'topics/show'
+    end
+  else
+    raise Sinatra::NotFound.new
+  end
+end
+
+TOPIC_FILES = Dir.glob('views/topics/*.md')
+
+TOPIC_FILES.each do |topic_file|
+  permalink = topic_file.match(/([\-\w]+)\.md/)[1]
+  TOPICS.update({ 'permalink' => permalink }, { 'permalink' => permalink, 'content' => File.new(topic_file).read }, :upsert => true)
+end
+
+
+
+
+
+
 # ===== HELPERS ===== #
 
 def question(name)
 end
+
+
+
 
 
 

@@ -18,6 +18,7 @@ STDERR.reopen(log)
 # Database
 DB = Mongo::Connection.new.db('CoreResource')
 PINGS = DB.collection('pings')
+TOPICS = DB.collection('topics')
 
 # Memcached
 set :cache_server, 'localhost:11211'

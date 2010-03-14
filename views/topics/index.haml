@@ -1,0 +1,9 @@
+.container
+  .topics.content
+    %h2.main
+      Topics
+
+    %dl.main
+      - @topics.each do |topic|
+        %dt= topic['permalink'].capitalize.gsub(/\-/, ' ').gsub(/http/i, 'HTTP')
+        %dd= markdown(topic['content'])
