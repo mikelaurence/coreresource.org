@@ -1,0 +1,38 @@
+%h2 Authentication
+  %ul
+    %li HTTP basic authentication
+    %li API token, passed via one of two methods:
+      %ul
+        %li HTTP header 'X-LighthouseToken'
+        %li Basic auth with token as login and 'x' as the password
+        %li Appending _token=XXX to all URLs
+
+%h2 Requests
+  %p Standard REST
+    %ul
+      %li GET list of resources: /tickets.xml
+      %li GET specific resource: /tickets/1.xml
+      %li POST new resource: /tickets
+        :pre
+          <ticket>
+            <assigned-user-id type="integer"></assigned-user-id>
+            <body></body>
+            <milestone-id type="integer"></milestone-id>
+            <state></state>
+            <title></title>
+          </ticket>
+
+      %li PUT to update resource: /tickets/1.xml
+      %li DELETE to destroy a resource: /tickets/1.xml
+  %p Allows nested resources (e.g., /projects/1/tickets/1.xml)
+
+%h2 Validations
+  HTTP status 422
+  :pre
+    <errors>
+      <error>Permalink can't be blank</error>
+      <error>Name can't be blank</error>
+    </errors>
+    
+%h2 Model
+  

@@ -1,0 +1,14 @@
+.container
+  .case_studies.content
+    %h2.main
+      Case Studies
+
+    %ul.main
+      - CASE_STUDIES.each do |case_study|
+        - url = "/case-studies/#{case_study}"
+        %li.main
+          %a{ :href => url }
+            %img{ :src => "/images/case-study-#{case_study}.png" }
+          = RDiscount.new(File.new(File.join(File.dirname(__FILE__), "#{case_study}/summary.md")).read + " [More...](#{url})").to_html
+          /.app
+          /  %img{ :src => "/images/app-#{case_study}-body.png", :style => "width:#{(292*0.6).to_i}px;height:#{(623*0.6).to_i}px;" }

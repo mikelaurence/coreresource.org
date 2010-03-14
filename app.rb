@@ -22,8 +22,8 @@ end
 # ===== PAGES ===== #
 
 map :root, '/'
-map :quick_start, '/quick_start'
-map :tutorials, '/tutorials'
+map :quick_start, '/quick-start'
+map :case_studies, '/case-studies'
 map :documentation, '/documentation'
 map :community, '/community'
 map :feed, '/feed'
@@ -34,15 +34,19 @@ get root_path do
   end
 end
 
+get '/quick_start' do
+  redirect '/quick-start'
+end
+
 get quick_start_path do
-  cache 'quick_start' do
+  cache 'quick-start' do
     haml :quick_start
   end
 end
 
-get tutorials_path do
-  cache 'tutorials' do
-    haml :tutorials
+get case_studies_path do
+  cache 'case-studies' do
+    haml :'case_studies/index'
   end
 end
 
@@ -63,6 +67,13 @@ end
 #    markdown :community
   #end
 #end
+
+
+# ===== ÇASE STUDIES ===== #
+
+CASE_STUDIES = Dir.glob('views/case_studies/*').select{ |fn| File.directory?(fn) }.collect{ |d| d.match(/\w+$/).to_s}
+
+
 
 
 

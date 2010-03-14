@@ -1,0 +1,1 @@
+Lighthouse provides [beautifully simple issue tracking](http://lighthouseapp.com) for open source and commercial projects. It offers a robust REST API with access to projects, tickets, and more.

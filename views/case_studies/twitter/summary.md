@@ -1,0 +1,1 @@
+You may have heard of twitter, a website where you can [share and discover what's happening right now, anywhere in the world](http://twitter.com). You can also write apps using their extensive API.
