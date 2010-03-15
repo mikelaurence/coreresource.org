@@ -23,7 +23,8 @@
             
           - elsif md[1]
             .span-8.last.implementation
-              = markdown md[1]
+              :markdown 
+                #{md[1]}
   
     /.span-6.last
     /  %img{ :src => "/images/app-#{@case_study}-body.png", :style => "width:#{(292*0.8).to_i}px;height:#{(623*0.8).to_i}px;" }

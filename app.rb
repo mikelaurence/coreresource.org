@@ -82,8 +82,12 @@ def case_study_path(case_study, file)
   File.join(ROOT, "views/case_studies/#{case_study}/#{file.to_s}.md")
 end
 
+def case_study_read(case_study, file)
+  File.read(case_study_path(case_study, file))
+end
+
 def case_study_split(case_study, file)
-  File.new(case_study_path(case_study, file)).read.split('==========')
+  File.read(case_study_path(case_study, file)).split('==========')
 end
 
 

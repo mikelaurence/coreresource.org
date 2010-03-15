@@ -1,0 +1,1 @@
+Facebook aims to [make the world more open and connected](http://facebook.com). With their API, you can consume and create content as well as utilize their vast userbase.

@@ -9,4 +9,5 @@
         %li.main
           %a{ :href => url }
             %img{ :src => "/images/case-study-#{case_study}.png" }
-          = case_study_md case_study, :summary, " [More...](#{url})"
+          :markdown 
+            #{case_study_read(case_study, :summary) + " [More...](#{url})"}
