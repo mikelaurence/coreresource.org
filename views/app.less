@@ -18,6 +18,10 @@
 
 @community_link: @banner_bright + #333;
 
+@button_bright: #fff;
+@button_medium: @button_bright - @diff;
+@button_dark: @button_medium - @diff;
+
 html {
   min-height: 100%;
 }
@@ -95,6 +99,28 @@ aside {
   font-weight:500;
 }
 
+.button {
+  display: inline-block;
+  a {
+    font-weight: bold;
+    color: #444;
+    padding: 4px;
+    padding-right: 20px;
+    background: white url("../images/arrow_right_16.png") right no-repeat;
+    border-radius: 15px;
+    border: solid 1px #ddd;
+    text-decoration: none;
+    :hover {
+      background: #ddd url("../images/arrow_right_16.png") right no-repeat;
+    }
+  }
+}
+
+.note {
+ .lite;
+ .centered;
+ margin-top: 12px;
+}
 
 
 /* ========== HEADER ========== */
@@ -271,6 +297,26 @@ aside {
     }
     .implementation {
       font-size: 0.85em;
+    }
+  }
+}
+
+
+
+/* ========== DOCUMENTATION ========== */
+
+.documentation {
+  ul.main {
+    li.main {
+      float: left;
+      margin: 20px;
+      width: 139px;
+      height: 150px;
+      
+      a:last-of-type {
+        font-weight: bold;
+        color: @banner_dark;
+      }
     }
   }
 }

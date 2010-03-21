@@ -20,16 +20,14 @@
             =link_to 'Core Resource', :root
         .span-18.last
           %ul
-            %li#quick_start
-              = link_to 'Quick Start', :quick_start
-            %li#tutorials
-              = link_to 'Case Studies', :case_studies
+            %li#source
+              = link_to 'Source', 'http://github.com/mikelaurence/CoreResource'
             %li#documentation
               = link_to 'Documentation', :documentation
             %li#community
               = link_to 'Community', :community
-            %li#source
-              = link_to 'Source', 'http://github.com/mikelaurence/CoreResource'
+            %li#blog
+              = link_to 'Blog', 'http://blog.coreresource.org'
     = yield
   - if production?
     %script

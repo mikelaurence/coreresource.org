@@ -4,9 +4,9 @@
       Topics
 
     %dl.main
-      - @topics.each do |topic|
+      - TOPICS.each do |topic|
         %dt 
-          %a{ :name => "/topics##{topic}" }= topic['permalink'].capitalize.gsub(/\-/, ' ').gsub(/http/i, 'HTTP')
+          %a{ :name => "/topics##{topic}" }= topic.capitalize.gsub(/\-/, ' ').gsub(/http/i, 'HTTP')
         %dd 
           :markdown
-            #{topic['content']}
+            #{File.read("views/topics/#{topic}.md")}

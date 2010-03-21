@@ -14,7 +14,6 @@ map :root, '/'
 map :quick_start, '/quick-start'
 map :documentation, '/documentation'
 map :community, '/community'
-map :feed, '/feed'
 
 get root_path do
   cache 'root' do
@@ -44,11 +43,6 @@ get community_path do
   end
 end
 
-#get feed_path do
-  #cache 'community' do
-#    markdown :community
-  #end
-#end
 
 
 # ===== CASE STUDIES ===== #
@@ -95,36 +89,27 @@ end
 
 # ===== TOPICS ===== #
 
+TOPIC_FILES = Dir.glob('views/topics/*.md')
+TOPICS = TOPIC_FILES.collect{ |tf| tf.match(/([\-\w]+)\.md/)[1] }
+
 map :topics, '/topics'
 
 get topics_path do
   cache 'topics' do
-    @topics = TOPICS.find().sort('permalink')
-    puts @topics
     haml :'topics/index'
   end
 end
 
-get '/topics/:topic' do
-  @topic = TOPICS.find(:permalink => params[:topic])
-  if @topic
-    cache "topics/#{params[:topic]}" do
-      haml :'topics/show'
-    end
-  else
-    raise Sinatra::NotFound.new
-  end
-end
-
-TOPIC_FILES = Dir.glob('views/topics/*.md')
-
-TOPIC_FILES.each do |topic_file|
-  permalink = topic_file.match(/([\-\w]+)\.md/)[1]
-  TOPICS.update({ 'permalink' => permalink }, { 'permalink' => permalink, 'content' => File.new(topic_file).read }, :upsert => true)
-end
-
-
-
+# get '/topics/:topic' do
+#   @topic = TOPICS.select{ |t| t == params[:topic] }
+#   if @topic
+#     cache "topics/#{@topic}" do
+#       haml :'topics/show'
+#     end
+#   else
+#     raise Sinatra::NotFound.new
+#   end
+# end
 
 
 
@@ -142,14 +127,14 @@ end
 
 # ===== WEB SERVICE ===== #
 
-get '/pings.json' do
-  cache 'pings.json' do
-    PINGS.find().limit(20).sort([['id', :desc]]).to_a.collect{ |p| p.merge({ 'id' => p.delete('_id').to_s }) }.to_json
-  end
-end
-
-post '/pings' do
-  expire 'pings.json'
-  (PINGS.insert 'created_at' => Time.new, 'name' => params[:name], 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
-    'message' => params[:message], 'device' => params[:device]).to_json
-end
+# get '/pings.json' do
+#   cache 'pings.json' do
+#     PINGS.find().limit(20).sort([['id', :desc]]).to_a.collect{ |p| p.merge({ 'id' => p.delete('_id').to_s }) }.to_json
+#   end
+# end
+# 
+# post '/pings' do
+#   expire 'pings.json'
+#   (PINGS.insert 'created_at' => Time.new, 'name' => params[:name], 'latitude' => params[:latitude], 'longitude' => params[:longitude], 
+#     'message' => params[:message], 'device' => params[:device]).to_json
+# end

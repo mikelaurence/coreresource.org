@@ -3,7 +3,7 @@ require 'sinatra'
 require 'sinatra/mapping'
 require 'sinatra/memcache'
 require 'less'
-require 'mongo'
+#require 'mongo'
 require 'json'
 require 'rdiscount'
 
@@ -16,9 +16,9 @@ STDOUT.reopen(log)
 STDERR.reopen(log)
 
 # Database
-DB = Mongo::Connection.new.db('CoreResource')
-PINGS = DB.collection('pings')
-TOPICS = DB.collection('topics')
+#DB = Mongo::Connection.new.db('CoreResource')
+#PINGS = DB.collection('pings')
+#TOPICS = DB.collection('topics')
 
 # Memcached
 set :cache_server, 'localhost:11211'
