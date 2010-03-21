@@ -40,6 +40,13 @@ h1, h2 {
 h1, h2, h3 {
   font-weight: bold;
   padding: 0;
+  a {
+    color: black;
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 h1 {
@@ -105,13 +112,14 @@ aside {
     font-weight: bold;
     color: #444;
     padding: 4px;
-    padding-right: 20px;
-    background: white url("../images/arrow_right_16.png") right no-repeat;
+    padding-right: 18px;
+    background: white url("../images/arrow_right_16.png") 5px right no-repeat;
     border-radius: 15px;
+    -moz-border-radius: 15px;
     border: solid 1px #ddd;
     text-decoration: none;
     :hover {
-      background: #ddd url("../images/arrow_right_16.png") right no-repeat;
+      background: #ddd url("../images/arrow_right_16.png") 5px right no-repeat;
     }
   }
 }
@@ -122,6 +130,16 @@ aside {
  margin-top: 12px;
 }
 
+.alert {
+  .centered;
+  margin: 2em 15em;
+  background: #b33;
+  color: white;
+  padding: 1em;
+  border: solid 1px #900;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}
 
 /* ========== HEADER ========== */
 
