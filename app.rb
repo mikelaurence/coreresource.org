@@ -58,9 +58,9 @@ end
 get '/case-studies/:case_study' do
   @case_study = params[:case_study]
   if File.exist?("views/case_studies/#{@case_study}")
-    #cache "case-studies/#{@case_study}" do
+    cache "case-studies/#{@case_study}" do
       haml :'case_studies/show'
-    #end
+    end
   else
     raise Sinatra::NotFound.new
   end
