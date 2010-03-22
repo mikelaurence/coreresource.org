@@ -73,7 +73,7 @@ def case_study_has?(case_study, file)
 end
 
 def case_study_path(case_study, file)
-  File.join(ROOT, "views/case_studies/#{case_study}/#{file.downcase}.md")
+  File.join(ROOT, "views/case_studies/#{case_study}/#{file.to_s.downcase}.md")
 end
 
 def case_study_read(case_study, file)
