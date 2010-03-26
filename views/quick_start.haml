@@ -16,7 +16,7 @@
               %li
                 CoreData.framework
               %li
-                CFNetwork.framework
+                CFNetwork.framework (iPhone) or CoreServices.framework (Mac)
               %li
                 SystemConfiguration.framework
               %li
@@ -43,11 +43,25 @@
         %p
           %ol
             %li
-              Drag the CoreResource folder into your project (into "Classes", for example). 
+              Drag the <b>CoreResource</b> folder into your project (into "Classes", for example). 
             %li
               Make sure "Copy items into destination group's folder" and "Recursively create groups for any added folders" are checked.
             %li
               Right click on the "Examples" folder and remove it
+            %li
+              If you're developing for Mac OS X and not the iPhone:
+              %ul
+                %li Remove the <b>Reachability</b> library
+                %li Remove <b>ASIAuthenticationDialog.h</b> and <b>ASIAuthenticationDialog.m</b> from the <b>ASIHTTPRequest</b> library
+            %li
+              You can choose to keep or remove the JSON and/or KissXML libraries, depending on your requirements.
+              %br
+                <em>Note:</em>If you keep KissXML, you will need to modify your project settings ("Project / Edit Project Settings"):
+                %ul
+                  %li Set <b>Other Linker Flags</b> to <code>-lxml2</code>
+                  %li Set <b>Header Search Paths</b> to <code>/usr/include/libxml2</code>
+                  %li.optional See the <a href="http://code.google.com/p/kissxml/wiki/GettingStarted">KissXML docs</a> for more information.
+                
             %li.optional
               Optionally, import CoreUtils.h in your prefix file for easy access to instantiation macros and other global goodies.
       
