@@ -49,14 +49,14 @@
             %li
               Right click on the "Examples" folder and remove it
             %li
-              If you're developing for Mac OS X and not the iPhone:
+              If you're developing for Mac OS X:
               %ul
                 %li Remove the <b>Reachability</b> library
                 %li Remove <b>ASIAuthenticationDialog.h</b> and <b>ASIAuthenticationDialog.m</b> from the <b>ASIHTTPRequest</b> library
             %li
               You can choose to keep or remove the JSON and/or KissXML libraries, depending on your requirements.
               %br
-                <em>Note:</em>If you keep KissXML, you will need to modify your project settings ("Project / Edit Project Settings"):
+                <em>Note:</em> If you keep KissXML, you will need to modify your project settings ("Project / Edit Project Settings"):
                 %ul
                   %li Set <b>Other Linker Flags</b> to <code>-lxml2</code>
                   %li Set <b>Header Search Paths</b> to <code>/usr/include/libxml2</code>
